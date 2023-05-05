@@ -1,0 +1,29 @@
+﻿<Window x:Class="WpfApp5.MainWindow"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp5"
+        mc:Ignorable="d"
+          Title="MainWindow" Height="350" Width="525">
+    <!--создаём элемент Grid, задаём фон, и функции обработки нажатий мыши-->
+    <Grid Background="White" MouseWheel="Grid_MouseWheel" MouseDown="Grid_MouseDown" MouseUp="Grid_MouseUp"
+          MouseMove="Grid_MouseMove">
+        <Viewport3D x:Name="viewport">
+            <!--создаём элемент Камера, даём ему название, куда он смотрит, откуда смотрим, и поле видимости-->
+            <Viewport3D.Camera>
+                <PerspectiveCamera x:Name="camera" LookDirection="0,0,-1" Position="0,0,10" FieldOfView="50"/>
+            </Viewport3D.Camera>
+            <!--создаём модель, которая потом будет обрабатываться-->
+            <ModelVisual3D x:Name="model">
+                <ModelVisual3D.Content>
+                    <Model3DGroup x:Name="group">
+                        <!--задаём цвет света и положение источника света-->
+                        <AmbientLight Color="Gray"/>
+                        <DirectionalLight Color="White" Direction="-5,-5,-10"/>
+                    </Model3DGroup>
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+        </Viewport3D>
+    </Grid>
+</Window>
